@@ -1,0 +1,30 @@
+<?php
+    include("database.php");
+    session_start();
+
+    if(isset($_SESSION['email'])){
+        $email = $_SESSION['email'];
+        $query = mysqli_query($conn, "SELECT * from logindetails WHERE Email = '$email'");
+        while($row = mysqli_fetch_array($query)){
+            echo "Sec Page " . $row['Email'];
+        }
+    }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn"><a href="logout.php">Logout</a></button>
+    <script>
+        const btn = document.getElementById("btn");
+        btn.addEventListener("click", ()=>{
+            alert("Logging out")
+        })
+    </script>
+</body>
+</html>

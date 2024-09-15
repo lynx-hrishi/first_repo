@@ -1,0 +1,24 @@
+<?php
+    include("database.php");
+    session_start();
+
+    if(isset($_SESSION['email'])){
+        $email = $_SESSION['email'];
+        $query = mysqli_query($conn, "SELECT * from logindetails WHERE Email = '$email'");
+        while($row = mysqli_fetch_array($query)){
+            echo "First Page " . $row['Email'];
+        }
+    }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+</head>
+<body>
+    <button><a href="next.html">Logout</a></button>
+</body>
+</html>
